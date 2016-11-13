@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20161106220359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "languages", force: :cascade do |t|
+    t.string "name", null: false
+    t.index ["name"], name: "index_languages_on_name", unique: true, using: :btree
+  end
+
+  create_table "pronounceables", force: :cascade do |t|
+    t.string  "name",        null: false
+    t.integer "language_id", null: false
+    t.index ["language_id"], name: "index_pronounceables_on_language_id", using: :btree
+    t.index ["name", "language_id"], name: "index_pronounceables_on_name_and_language_id", unique: true, using: :btree
+  end
+
+  add_foreign_key "pronounceables", "languages"
 end
