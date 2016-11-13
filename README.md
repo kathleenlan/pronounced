@@ -1,24 +1,28 @@
-# README
+# Pronounced
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Pronounced is a pronunciation crowd-sourcing platform.
 
-Things you may want to cover:
+## Ruby version
 
-* Ruby version
+This application is developed against Ruby 2.3.1.
 
-* System dependencies
+## System dependencies
 
-* Configuration
+You will need to install ImageMagick, which is a dependency of the paperclip gem.
 
-* Database creation
+## Getting started
 
-* Database initialization
+* Create a `database.yml` and populate it with the appropriate credentials.
 
-* How to run the test suite
+`cp config/database.yml.example config/database.yml`
 
-* Services (job queues, cache servers, search engines, etc.)
+## Test Suite
 
-* Deployment instructions
+The test suite can be run by running `bundle exec rake` on the command line in the project directory.
 
-* ...
+## TODO
+
+* Render flash messages
+* Implement authentication
+* Implement authorization
+* Add views and controller actions
