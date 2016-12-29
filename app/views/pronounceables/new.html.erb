@@ -3,7 +3,7 @@
 <div class="ui segment">
   <%= form_for @pronounceable, html: { class: "ui form" } do |f| %>
     <div class="fields">
-      <div class="required field">
+      <div class="required field pronounceable-language-field">
         <%= f.label :language_id %>
         <%= f.select :language_id,
           Language.pluck(:name, :id),
@@ -11,7 +11,7 @@
           { class: "ui search dropdown" }
         %>
       </div>
-      <div class="required field">
+      <div class="required field pronounceable-name-field">
         <%= f.label :name, 'Pronounceable name' %>
         <%= f.text_field :name, placeholder: 'Word or phrase to be pronounced' %>
       </div>

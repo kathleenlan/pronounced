@@ -1,1 +1,11 @@
-Under construction!
+<h1 class="ui header"><%= @pronounceable %></h1>
+
+<% if @pronounceable.pronunciations.any? %>
+  <% @pronounceable.pronunciations.find_each do |pronunciation| %>
+    <div class="ui segment">
+      Contributed by <%= pronunciation.user %>
+    </div>
+  <% end %>
+<% else %>
+    No pronunciations available.
+<% end %>

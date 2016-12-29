@@ -25,4 +25,18 @@ RSpec.describe Pronounceable, type: :model do
       is_expected.to validate_uniqueness_of(:name).scoped_to(:language_id)
     end
   end
+
+  describe '#to_s' do
+    let(:name) do
+      'cabbage'
+    end
+
+    subject do
+      described_class.new(name: name)
+    end
+
+    it 'returns the name' do
+      expect(subject.to_s).to eql name
+    end
+  end
 end

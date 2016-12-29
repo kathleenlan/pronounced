@@ -6,4 +6,8 @@ class User < ApplicationRecord
          :confirmable, :lockable
 
   has_many :pronunciations, inverse_of: :user
+
+  def to_s
+    email
+  end
 end

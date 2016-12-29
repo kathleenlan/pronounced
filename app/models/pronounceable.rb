@@ -5,6 +5,10 @@ class Pronounceable < ApplicationRecord
 
   has_many :pronunciations, inverse_of: :pronounceable
 
+  def to_s
+    name
+  end
+
   def pronunciations_count
     pronunciations.count
   end
