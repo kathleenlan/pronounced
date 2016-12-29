@@ -13,7 +13,6 @@ gem 'pg', '~> 0.19.0'
 gem 'puma', '~> 3.6.0'
 gem 'sass-rails', '~> 5.0.6'
 gem 'semantic-ui-sass', '~> 2.1.8.0'
-gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
