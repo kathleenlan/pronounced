@@ -9,6 +9,12 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="ui attached stackable menu navigation-menu">
+      <%= link_to "Pronounced", pronounceables_path, class: "item homepage-link" %>
+    </div>
+    <div class="ui container main-container">
+      <%= render partial: 'shared/flash_messages' %>
+      <%= yield %>
+    </div>
   </body>
 </html>

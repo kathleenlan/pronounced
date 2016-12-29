@@ -1,0 +1,56 @@
+.add-button-row {
+  margin: 0.5em 0;
+
+  .ui.button {
+    margin: 0.5em 0 0.5em 1em;
+  }
+}
+
+.index-listing {
+  clear: both;
+  margin-top: 1em;
+}
+
+.pronounceable {
+  &:hover {
+    cursor: pointer;
+  }
+  .pronounceable-name {
+    margin: 1rem 0rem;
+    padding: 1rem 0;
+    font-size: 1.75rem;
+  }
+
+  .pronounceable-name {
+    word-wrap: break-word;
+  }
+
+  .pronunciations-count {
+    margin: auto;
+  }
+}
+
+.ui.grid.segment.pronounceable {
+  border: 2px solid $dark-blue;
+  &:hover {
+    border-color: $light-blue;
+    color: $light-blue;
+  }
+}
+
+.ui.form.pronounceable-search-form .fields {
+  .pronounceable-name-search.field {
+    padding-left: 0em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  .pronounceable-search-button {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+}
+
+.pronounceable-no-results-found-message {
+  clear: both;
+}

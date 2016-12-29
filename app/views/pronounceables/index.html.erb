@@ -1,0 +1,30 @@
+<div class="add-button-row">
+  <%= link_to new_pronounceable_path, class: "ui positive right floated button" do %>
+    <i class="add circle icon"></i> Add a pronounceable
+  <% end %>
+</div>
+
+<% if @pronounceables.any? %>
+  <div class="ui cards index-listing" data-container="pronounceables">
+    <% @pronounceables.each do |pronounceable| %>
+      <div class="card pronounceable" data-link-to=<%= pronounceable_path(pronounceable) %>>
+        <div class="content">
+          <div class="header">
+            <%= pronounceable.name %>
+          </div>
+
+          <div class="meta pronunciations-count">
+            <%= pronounceable.pronunciations_count %>
+            Pronunciations
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= paginate @pronounceables, remote: true %>
+<% else %>
+  <div class="ui message pronounceable-no-results-found-message">
+    No results found. Click the button above to add a new pronounceable!
+  </div>
+<% end %>
+
