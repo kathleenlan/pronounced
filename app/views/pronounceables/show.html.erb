@@ -1,11 +1,27 @@
 <h1 class="ui header"><%= @pronounceable %></h1>
 
+<h2 class="ui horizontal divider header">Pronunciations</h2>
+
 <% if @pronounceable.pronunciations.any? %>
   <% @pronounceable.pronunciations.find_each do |pronunciation| %>
-    <div class="ui segment">
-      Contributed by <%= pronunciation.user %>
+    <div class="ui stackable two column grid segment">
+      <div class="column">
+        <%= audio_tag(pronunciation.audio_file.url, controls: true, loop: true, preload: 'none') %>
+      </div>
+      <div class="column">
+        Contributed by <%= pronunciation.user %>
+      </div>
     </div>
   <% end %>
 <% else %>
     No pronunciations available.
+<% end %>
+
+<h2 class="ui horizontal divider header">Add a Pronunciation</h2>
+<%= form_for @pronounceable.pronunciations.new, url: pronounceable_pronunciations_path(@pronounceable), html: { multipart: true, class: "ui form" } do |f| %>
+  <%= f.hidden_field :pronounceable_id %>
+  <!-- TODO: Update the user_id hidden field to use the current user's id once authentication has been implemented -->
+  <%= f.hidden_field :user_id, value: User.first.id %>
+  <%= f.file_field :audio_file, class: "required field" %>
+  <%= f.submit "Upload pronunciation", class: "positive ui button" %>
 <% end %>

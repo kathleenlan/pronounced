@@ -1,8 +1,8 @@
 class Pronunciation < ApplicationRecord
-  has_attached_file :audio_file, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :audio_file
   validates_attachment :audio_file, presence: true,
       content_type: { content_type: ["audio/mpeg", "audio/mp3"] },
-      size: { in: 0..100.kilobytes }
+      size: { in: 0..1.megabytes }
 
   validates :pronounceable, presence: true
   validates :user, presence: true
