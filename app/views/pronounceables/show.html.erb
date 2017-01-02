@@ -18,10 +18,17 @@
 <% end %>
 
 <h2 class="ui horizontal divider header">Add a Pronunciation</h2>
-<%= form_for @pronounceable.pronunciations.new, url: pronounceable_pronunciations_path(@pronounceable), html: { multipart: true, class: "ui form" } do |f| %>
-  <%= f.hidden_field :pronounceable_id %>
-  <!-- TODO: Update the user_id hidden field to use the current user's id once authentication has been implemented -->
-  <%= f.hidden_field :user_id, value: User.first.id %>
-  <%= f.file_field :audio_file, class: "required field" %>
-  <%= f.submit "Upload pronunciation", class: "positive ui button" %>
+<% if user_signed_in? %>
+  <%= form_for @pronounceable.pronunciations.new, url: pronounceable_pronunciations_path(@pronounceable), html: { multipart: true, class: "ui form" } do |f| %>
+    <%= f.hidden_field :pronounceable_id %>
+    <!-- TODO: Update the user_id hidden field to use the current user's id once authentication has been implemented -->
+    <%= f.hidden_field :user_id, value: User.first.id %>
+    <%= f.file_field :audio_file, class: "required field" %>
+    <%= f.submit "Upload pronunciation", class: "positive ui button" %>
+  <% end %>
+<% else %>
+  <div class="ui message error">
+    <i class="warning sign icon"></i>
+    You must be logged in to upload a pronunciation.
+  </div>
 <% end %>

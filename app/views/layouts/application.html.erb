@@ -11,6 +11,11 @@
   <body>
     <div class="ui attached stackable menu navigation-menu">
       <%= link_to "Pronounced", pronounceables_path, class: "item homepage-link" %>
+      <% if user_signed_in? %>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "item right" %>
+      <% else %>
+        <%= link_to "Log in", new_user_session_path, class: "item right" %>
+      <% end %>
     </div>
     <div class="ui container main-container">
       <%= render partial: 'shared/flash_messages' %>

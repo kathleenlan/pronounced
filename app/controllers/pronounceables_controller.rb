@@ -1,4 +1,5 @@
 class PronounceablesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :set_existing_pronounceable, only: [:show, :edit, :update]
 
   def index
@@ -15,7 +16,7 @@ class PronounceablesController < ApplicationController
       flash[:info] = 'Pronounceable saved successfully.'
       redirect_to pronounceable_path(@pronounceable)
     else
-      flash[:error] = "Unable to save pronounceable. #{@pronounceable.errors.full_messages.to_sentence}"
+      flash[:error] = "Unable to save pronounceable. #{@pronounceable.errors.full_messages.to_sentence}."
       render 'new'
     end
   end

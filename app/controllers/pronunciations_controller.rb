@@ -1,4 +1,6 @@
 class PronunciationsController < ApplicationController
+  before_action :authenticate_user!, only: [:create]
+
   def create
     pronunciation = Pronunciation.new(permitted_params)
     if pronunciation.save
