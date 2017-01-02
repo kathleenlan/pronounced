@@ -1,6 +1,8 @@
-<% flash.each do |key, message| %>
-  <% flash_presenter = FlashPresenter.new(key: key, message: message) %>
-  <div class="ui message <%= flash_presenter.css_classes %>">
-    <%= message %>
-  </div>
-<% end %>
+<div class="flash-message-container">
+  <% flash.each do |key, message| %>
+    <% flash_presenter = FlashPresenter.new(key: key, message: message) %>
+    <div class="ui message <%= flash_presenter.css_classes %>">
+      <%= message %>
+    </div>
+  <% end %>
+</div>
