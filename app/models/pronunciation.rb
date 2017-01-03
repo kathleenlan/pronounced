@@ -5,7 +5,7 @@ class Pronunciation < ApplicationRecord
       size: { in: 0..1.megabytes }
 
   validates :pronounceable, presence: true
-  validates :user, presence: true
+  validates :user, presence: true, uniqueness: { scope: :pronounceable_id }
 
   belongs_to :pronounceable, inverse_of: :pronunciations
   belongs_to :user, inverse_of: :pronunciations

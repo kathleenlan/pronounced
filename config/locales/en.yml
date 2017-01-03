@@ -20,4 +20,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      pronunciation:
+        user: 'You'
+    errors:
+      models:
+        pronunciation:
+          attributes:
+            user:
+              taken: 'have already uploaded a pronunciation for this Pronouncable.'
