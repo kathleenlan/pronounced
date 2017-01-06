@@ -1,6 +1,16 @@
 # Pronounced
 
-Pronounced is a pronunciation crowd-sourcing platform.
+Pronounced is a pronunciation crowd-sourcing platform. Users can listen
+to other users' audio recordings of pronunciations of words and phrases (
+"Pronounceables") in a given language and also upload their own recordings.
+While services such as Google Translate provide pronunciations of words in numerous
+languages, they usually only provide one person's pronunciation. Given the
+diversity of accents that exist for languages such as English, it can sometimes
+be difficult for a non-native speaker of the language to gain a comprehensive
+understanding of how different native speakers pronounce certain words. The goal
+of Pronounced is to provide a platform where multiple users' pronunciations
+can be aggregated to provide a more complete understanding of how
+a Pronounceable may sound.
 
 ## Ruby version
 
@@ -22,7 +32,13 @@ The test suite can be run by running `bundle exec rake` on the command line in t
 
 ## TODO
 
-* Render flash messages
-* Implement authentication
+* Add abuse reporting system
+  - implement AbuseReportStatusesController
+  - or maybe just use aasm for capturing the abuse report status?
+  - implement AbuseReport model
+  - add a way for users to file an abuse report for a pronunciation
+  - add authorization/restrict report filing to logged in users
+  - add admin pages for viewing and handling abuse reports
+
+* Add rating system for users to evaluate the accuracy of pronunciations
 * Implement authorization
-* Add views and controller actions
