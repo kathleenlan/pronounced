@@ -1,0 +1,28 @@
+<h1><%= @presenter.header %></h1>
+
+<div class="add-button-row">
+  <%= link_to new_property_path, class: "ui positive right floated button" do %>
+    <i class="add circle icon"></i> <%= @presenter.new_property_button_label %>
+  <% end %>
+</div>
+
+<% if @presenter.properties.any? %>
+  <table class="ui table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @presenter.properties.each do |property| %>
+        <tr>
+          <td><%= property.name %></td>
+          <td><%= property.description.truncate(50) %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  No <%= @presenter.pluralized_property_name %> available.
+<% end %>

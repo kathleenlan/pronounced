@@ -1,0 +1,9 @@
+<h1><%= @presenter.property_name %></h1>
+
+<div class="ui segment">
+  <% if @presenter.property_description.present? %>
+    <%= @presenter.property_description %>
+  <% else %>
+    No description available.
+  <% end %>
+</div>

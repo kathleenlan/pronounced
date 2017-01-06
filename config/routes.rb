@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   resources :pronounceables do
     resources :pronunciations, only: [:new, :create]
   end
+
+  resources :abuse_reasons, except: [:destroy]
+  resources :abuse_report_statuses, except: [:destroy]
 end

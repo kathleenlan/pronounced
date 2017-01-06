@@ -1,0 +1,18 @@
+<h1>New <%= @presenter.property_type %></h1>
+
+<div class="ui segment">
+  <%= form_for @presenter.property, html: { class: "ui form" } do |f| %>
+    <div class="fields">
+      <div class="required field">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+      </div>
+    </div>
+
+    <%= f.submit "Save", class: "ui positive button" %>
+  <% end %>
+</div>

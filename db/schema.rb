@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170103024656) do
+ActiveRecord::Schema.define(version: 20170106004143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 20170103024656) do
     t.index ["pronounceable_id"], name: "index_pronunciations_on_pronounceable_id", using: :btree
     t.index ["user_id", "pronounceable_id"], name: "index_pronunciations_on_user_id_and_pronounceable_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_pronunciations_on_user_id", using: :btree
+  end
+
+  create_table "properties", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.string   "type",        null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
