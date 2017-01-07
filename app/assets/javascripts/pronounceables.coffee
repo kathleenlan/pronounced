@@ -7,7 +7,7 @@ window.Pronounceables = do ->
   bindEvents = ->
     bindPronounceableCardClickEvent()
 
-  bindPronounceableCardClickEvent = (e) ->
+  bindPronounceableCardClickEvent = ->
     $(dataLinkToSelector).on 'click', (event) ->
       $pronounceable = $(event.currentTarget)
       pronounceableUrl = $pronounceable.data('link-to')

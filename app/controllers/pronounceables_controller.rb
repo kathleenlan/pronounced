@@ -38,7 +38,8 @@ class PronounceablesController < ApplicationController
   end
 
   private def set_existing_pronounceable
-    @pronounceable = Pronounceable.find(params[:id])
+    pronounceable = Pronounceable.find(params[:id])
+    @pronounceable = PronounceablePresenter.new(pronounceable)
   end
 
   private def pronounceable_params

@@ -21,4 +21,6 @@ class AbuseReport < ApplicationRecord
   belongs_to :pronunciation, inverse_of: :abuse_reports
   belongs_to :reported_by, class_name: 'User', inverse_of: :abuse_reports
   belongs_to :abuse_report_reason
+
+  scope :reported_by, -> (user) { where(reported_by: user) }
 end

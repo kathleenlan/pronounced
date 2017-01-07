@@ -11,4 +11,8 @@ class Pronunciation < ApplicationRecord
   belongs_to :user, inverse_of: :pronunciations
 
   has_many :abuse_reports, inverse_of: :pronunciation
+
+  def any_abuse_reports_reported_by?(user)
+    abuse_reports.reported_by(user).any?
+  end
 end

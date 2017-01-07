@@ -1,0 +1,23 @@
+<% if user_signed_in? && pronunciation.user_allowed_to_report?(current_user) %>
+  <%= link_to "#", class: "ui button", data: { abuse_report_button: index } do %>
+    <i class="flag icon"></i> Report
+  <% end %>
+  <div class="abuse-report-container ui segment" data-abuse-report-container="<%= index %>">
+    <h3>Abuse Report</h3>
+    <%= form_for pronunciation.new_abuse_report(user: current_user), class: "ui form" do |f| %>
+      <%= f.hidden_field :reported_by_id %>
+      <%= f.hidden_field :pronunciation_id %>
+      <div class="fields">
+        <div class="field">
+          <%= f.label :abuse_report_reason_id, "Reason" %>
+          <%= f.select :abuse_report_reason_id, options_for_select(AbuseReportReason.pluck(:name, :id)), include_blank: true, class: "ui dropdown" %>
+        </div>
+        <div class="field">
+          <%= f.label :description %>
+          <%= f.text_area :description, class: "ui field" %>
+        </div>
+        <%= f.submit "Submit", class: "ui button" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -2,17 +2,22 @@
 
 <h2 class="ui horizontal divider header">Pronunciations</h2>
 
-<% if @pronounceable.pronunciations.any? %>
-  <% @pronounceable.pronunciations.find_each do |pronunciation| %>
-    <div class="ui stackable two column grid segment">
-      <div class="column">
-        <%= audio_tag(pronunciation.audio_file.url, controls: true, loop: true, preload: 'none') %>
+<% if @pronounceable.any_pronunciations? %>
+  <div data-container="pronunciations">
+    <% @pronounceable.each_pronunciation do |pronunciation, index| %>
+      <div class="ui stackable two column grid segment">
+        <div class="column">
+          <%= audio_tag(pronunciation.audio_file.url, controls: true, loop: true, preload: "none") %>
+        </div>
+        <div class="column">
+          Contributed by <%= pronunciation.user %>
+        </div>
+        <div class="column">
+          <%= render partial: 'abuse_report', locals: { pronunciation: pronunciation, index: index } %>
+        </div>
       </div>
-      <div class="column">
-        Contributed by <%= pronunciation.user %>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 <% else %>
     No pronunciations available.
 <% end %>
