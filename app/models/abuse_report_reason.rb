@@ -1,0 +1,2 @@
+class AbuseReportReason < Property
+end

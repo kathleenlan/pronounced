@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-describe AbuseReasonPresenter do
+describe AbuseReportReasonPresenter do
   it_behaves_like 'a property presenter'
 
-  let(:abuse_reason) do
-    AbuseReason.new(name: name, description: description)
+  let(:abuse_report_reason) do
+    AbuseReportReason.new(name: name, description: description)
   end
   let(:name) do
     'Irrelevant'
@@ -14,29 +14,29 @@ describe AbuseReasonPresenter do
   end
 
   subject do
-    described_class.new(abuse_reason)
+    described_class.new(abuse_report_reason)
   end
 
   describe '#property' do
-    it 'returns the abuse reason' do
-      expect(subject.property).to eql abuse_reason
+    it 'returns the abuse report reason' do
+      expect(subject.property).to eql abuse_report_reason
     end
   end
 
   describe '#property_type' do
-    it 'returns "Abuse reason"' do
-      expect(subject.property_type).to eql 'Abuse reason'
+    it 'returns "Abuse report reason"' do
+      expect(subject.property_type).to eql 'Abuse report reason'
     end
   end
 
   describe '#property_name' do
-    it 'returns the name of the abuse reason' do
+    it 'returns the name of the abuse report reason' do
       expect(subject.property_name).to eql name
     end
   end
 
   describe '#property_description' do
-    it 'returns the description of the abuse reason' do
+    it 'returns the description of the abuse report reason' do
       expect(subject.property_description).to eql description
     end
   end

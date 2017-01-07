@@ -1,12 +1,12 @@
-class AbuseReasonPresenter
+class AbuseReportReasonPresenter
   attr_reader :property
 
-  def initialize(abuse_reason)
-    @property = abuse_reason
+  def initialize(abuse_report_reason)
+    @property = abuse_report_reason
   end
 
   def property_type
-    'Abuse reason'
+    'Abuse report reason'
   end
 
   def property_name
