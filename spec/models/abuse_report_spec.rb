@@ -65,4 +65,25 @@ RSpec.describe AbuseReport, type: :model do
       is_expected.to validate_presence_of(:abuse_report_reason)
     end
   end
+
+  describe 'abuse_report_status' do
+    describe 'transitions' do
+      it do
+        is_expected.to transition_from(:submitted).to(:acknowledged)
+        .on_event(:acknowledge).on(:abuse_report_status)
+      end
+      it do
+        is_expected.to_not transition_from(:submitted).to(:addressed)
+        .on_event(:acknowledge).on(:abuse_report_status)
+      end
+      it do
+        is_expected.to transition_from(:acknowledged).to(:addressed)
+        .on_event(:address).on(:abuse_report_status)
+      end
+      it do
+        is_expected.to_not transition_from(:acknowledged).to(:submitted)
+        .on_event(:address).on(:abuse_report_status)
+      end
+    end
+  end
 end
