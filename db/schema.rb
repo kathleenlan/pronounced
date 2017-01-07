@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106004143) do
+ActiveRecord::Schema.define(version: 20170107040039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "abuse_reports", force: :cascade do |t|
+    t.integer  "pronunciation_id",       null: false
+    t.integer  "reported_by_id",         null: false
+    t.integer  "abuse_report_reason_id", null: false
+    t.text     "description"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["abuse_report_reason_id"], name: "index_abuse_reports_on_abuse_report_reason_id", using: :btree
+    t.index ["pronunciation_id"], name: "index_abuse_reports_on_pronunciation_id", using: :btree
+    t.index ["reported_by_id"], name: "index_abuse_reports_on_reported_by_id", using: :btree
+  end
 
   create_table "languages", force: :cascade do |t|
     t.string "name", null: false
@@ -73,6 +85,9 @@ ActiveRecord::Schema.define(version: 20170106004143) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
   end
 
+  add_foreign_key "abuse_reports", "pronunciations"
+  add_foreign_key "abuse_reports", "properties", column: "abuse_report_reason_id"
+  add_foreign_key "abuse_reports", "users", column: "reported_by_id"
   add_foreign_key "pronounceables", "languages"
   add_foreign_key "pronunciations", "pronounceables"
   add_foreign_key "pronunciations", "users"

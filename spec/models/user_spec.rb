@@ -73,5 +73,9 @@ RSpec.describe User, type: :model do
       is_expected.to have_many(:pronunciations)
         .inverse_of(:user)
     end
+    it do
+      is_expected.to have_many(:abuse_reports)
+        .inverse_of(:reported_by)
+    end
   end
 end

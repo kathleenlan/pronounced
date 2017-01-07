@@ -47,5 +47,9 @@ RSpec.describe Pronunciation, type: :model do
     it do
       is_expected.to belong_to(:pronounceable)
     end
+    it do
+      is_expected.to have_many(:abuse_reports)
+        .inverse_of(:pronunciation)
+    end
   end
 end

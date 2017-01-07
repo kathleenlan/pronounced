@@ -9,4 +9,6 @@ class Pronunciation < ApplicationRecord
 
   belongs_to :pronounceable, inverse_of: :pronunciations
   belongs_to :user, inverse_of: :pronunciations
+
+  has_many :abuse_reports, inverse_of: :pronunciation
 end
