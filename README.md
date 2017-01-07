@@ -33,9 +33,6 @@ The test suite can be run by running `bundle exec rake` on the command line in t
 ## TODO
 
 * Add abuse reporting system
-  - implement AbuseReportStatusesController
-  - or maybe just use aasm for capturing the abuse report status?
-  - implement AbuseReport model
   - add a way for users to file an abuse report for a pronunciation
   - add authorization/restrict report filing to logged in users
   - add admin pages for viewing and handling abuse reports

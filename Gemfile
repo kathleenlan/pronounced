@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 5.0.0'
 
+gem 'aasm', '~> 4.11.1'
 gem 'coffee-rails', '~> 4.2.1'
 gem 'devise'
 gem 'jbuilder', '~> 2.5'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170107040039) do
+ActiveRecord::Schema.define(version: 20170107043313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170107040039) do
     t.text     "description"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "abuse_report_status"
     t.index ["abuse_report_reason_id"], name: "index_abuse_reports_on_abuse_report_reason_id", using: :btree
     t.index ["pronunciation_id"], name: "index_abuse_reports_on_pronunciation_id", using: :btree
     t.index ["reported_by_id"], name: "index_abuse_reports_on_reported_by_id", using: :btree
