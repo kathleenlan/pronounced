@@ -7,7 +7,7 @@
     <% @pronounceable.each_pronunciation do |pronunciation, index| %>
       <div class="ui stackable two column grid segment">
         <div class="column">
-          <%= audio_tag(pronunciation.audio_file.url, controls: true, loop: true, preload: "none") %>
+          <%= audio_tag(pronunciation.audio_file_url, controls: true, loop: true, preload: "none") %>
         </div>
         <div class="column">
           Contributed by <%= pronunciation.user %>

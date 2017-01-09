@@ -1,0 +1,49 @@
+<h1>Abuse report #<%= @abuse_report.id %></h1>
+
+<h2>Report details</h2>
+
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>Reported by</th>
+      <th>Reported on</th>
+      <th>Report reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @abuse_report.reported_by %></td>
+      <td><%= @abuse_report.created_at %></td>
+      <td><%= @abuse_report.abuse_report_reason %></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Report description</h3>
+<div class="ui segment">
+  <%= @abuse_report.description %>
+</div>
+
+<h2>Pronunciation details</h2>
+
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>Pronounceable</th>
+      <th>Uploaded By</th>
+      <th>Uploaded On</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @abuse_report.pronounceable %></td>
+      <td><%= @abuse_report.pronunciation_uploaded_by %></td>
+      <td><%= @abuse_report.pronunciation_upload_date %></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Uploaded file</h3>
+<%= audio_tag(@abuse_report.pronunciation_audio_file_url, controls: true, loop: true, preload: "none") %>
+
+<!-- TODO: Add buttons for making acknowledging and addressing report -->

@@ -52,4 +52,39 @@ RSpec.describe Pronunciation, type: :model do
         .inverse_of(:pronunciation)
     end
   end
+
+  describe 'delegations' do
+    it do
+      is_expected.to delegate_method(:url).to(:audio_file).with_prefix
+    end
+  end
+
+  describe '#upload_date' do
+    let(:audio_file_updated_at) do
+      instance_double 'ActiveSupport::TimeWithZone'
+    end
+
+    before do
+      allow(subject).to receive(:audio_file_updated_at)
+        .and_return audio_file_updated_at
+    end
+
+    it 'returns the datetime at which the audio file was last updated' do
+      expect(subject.upload_date).to eql audio_file_updated_at
+    end
+  end
+
+  describe '#uploaded_by' do
+    let(:user) do
+      User.new
+    end
+
+    subject do
+      described_class.new(user: user)
+    end
+
+    it 'returns the user' do
+      expect(subject.uploaded_by).to eql user
+    end
+  end
 end

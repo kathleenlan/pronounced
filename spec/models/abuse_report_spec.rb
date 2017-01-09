@@ -66,6 +66,24 @@ RSpec.describe AbuseReport, type: :model do
     end
   end
 
+  describe 'delegations' do
+    it do
+      is_expected.to delegate_method(:pronounceable).to(:pronunciation)
+    end
+    it do
+      is_expected.to delegate_method(:upload_date).to(:pronunciation)
+        .with_prefix
+    end
+    it do
+      is_expected.to delegate_method(:uploaded_by).to(:pronunciation)
+        .with_prefix
+    end
+    it do
+      is_expected.to delegate_method(:audio_file_url).to(:pronunciation)
+        .with_prefix
+    end
+  end
+
   describe 'abuse_report_status' do
     describe 'transitions' do
       it do

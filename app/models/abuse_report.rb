@@ -22,5 +22,8 @@ class AbuseReport < ApplicationRecord
   belongs_to :reported_by, class_name: 'User', inverse_of: :abuse_reports
   belongs_to :abuse_report_reason
 
+  delegate :pronounceable, to: :pronunciation
+  delegate :upload_date, :uploaded_by, :audio_file_url, to: :pronunciation, prefix: true
+
   scope :reported_by, -> (user) { where(reported_by: user) }
 end

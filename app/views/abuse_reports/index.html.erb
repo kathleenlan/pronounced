@@ -1,0 +1,42 @@
+<h1>Abuse Reports</h1>
+
+<div class="ui message">
+  Click on a row to view the details for the report.
+</div>
+
+<% if @abuse_reports.any? %>
+  <table class="ui sortable compact celled striped table">
+    <thead>
+      <tr>
+        <th rowspan="2">
+          Pronounceable
+        </th>
+        <th>
+          Pronunciation
+        </th>
+        <th>
+          Report Reason
+        </th>
+        <th>
+          Report Status
+        </th>
+      </tr>
+      <tr>
+      </tr>
+    </thead>
+    <tbody>
+      <% @abuse_reports.each do |report| %>
+        <tr class="clickable-table-row" data-row-click=<%= abuse_report_path(report) %>>
+          <td><%= report.pronounceable %></td>
+          <td>
+            <%= audio_tag(report.pronunciation_audio_file_url, controls: true, loop: true, preload: "none") %>
+          </td>
+          <td><%= report.abuse_report_reason %></td>
+          <td><%= report.abuse_report_status %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  No abuse reports. All is well.
+<% end %>
