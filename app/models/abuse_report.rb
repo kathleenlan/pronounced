@@ -1,7 +1,8 @@
+# frozen_string_literal: true
 class AbuseReport < ApplicationRecord
   include AASM
 
-  aasm(:abuse_report_status, :column => 'abuse_report_status') do
+  aasm(:abuse_report_status, column: 'abuse_report_status') do
     state :submitted, initial: true
     state :acknowledged
     state :addressed
@@ -23,9 +24,10 @@ class AbuseReport < ApplicationRecord
   belongs_to :abuse_report_reason
 
   delegate :pronounceable, to: :pronunciation
-  delegate :upload_date, :uploaded_by, :audio_file_url, to: :pronunciation, prefix: true
+  delegate :upload_date, :uploaded_by, :audio_file_url,
+           to: :pronunciation, prefix: true
 
-  scope :reported_by, -> (user) { where(reported_by: user) }
+  scope :reported_by, ->(user) { where(reported_by: user) }
 
   def disable_pronunciation!
     pronunciation.disable!

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
 class AbuseReportsController < ApplicationController
-  before_action :set_existing_abuse_report, only: [:acknowledge, :dismiss, :show]
+  before_action :set_existing_abuse_report,
+                only: [:acknowledge, :dismiss, :show]
 
   def acknowledge
     @abuse_report.acknowledge!
@@ -10,14 +12,18 @@ class AbuseReportsController < ApplicationController
     redirect_to abuse_report_path(@abuse_report)
   end
 
+  # TODO: Refactor
+  # rubocop:disable Metrics/MethodLength
   def dismiss
     ActiveRecord::Base.transaction do
       @abuse_report.address!
-      if params[:disable_pronunciation] == "true"
+      if params[:disable_pronunciation] == 'true'
         if @abuse_report.disable_pronunciation!
-          flash[:info] = 'Successfully disabled pronunciation and dismissed report.'
+          flash[:info] = 'Successfully disabled pronunciation and dismissed '\
+            'report.'
         else
-          flash[:error] = 'Unable to disable pronunciation. The report status has been left unchanged.'
+          flash[:error] = 'Unable to disable pronunciation. The report status '\
+            'has been left unchanged.'
           raise ActiveRecord::Rollback
         end
       else
@@ -29,6 +35,7 @@ class AbuseReportsController < ApplicationController
   ensure
     redirect_to abuse_report_path(@abuse_report)
   end
+  # rubocop:enable Metrics/MethodLength
 
   # TODO: Set up pagination
   def index
@@ -40,14 +47,15 @@ class AbuseReportsController < ApplicationController
     if abuse_report.save
       flash[:info] = 'Abuse report submitted successfully.'
     else
-      flash[:error] = "Abuse report could not be submitted for the following reasons: #{abuse_report.errors.full_messages.to_sentence}."
+      flash[:error] = 'Abuse report could not be submitted for the following '\
+        "reasons: #{abuse_report.errors.full_messages.to_sentence}."
     end
-    # TODO: If abuse report fails to save, re-render pronounceable page with previously submitted data in abuse report form.
+    # TODO: If abuse report fails to save, re-render pronounceable page with
+    # previously submitted data in abuse report form.
     redirect_to pronounceable_path(abuse_report.pronounceable)
   end
 
-  def show
-  end
+  def show; end
 
   private def set_existing_abuse_report
     @abuse_report = AbuseReport.find(params[:id])

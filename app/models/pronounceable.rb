@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Pronounceable < ApplicationRecord
   validates :name, uniqueness: { scope: :language_id }
 

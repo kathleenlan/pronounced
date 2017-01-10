@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class PronunciationsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
 
@@ -6,7 +7,8 @@ class PronunciationsController < ApplicationController
     if pronunciation.save
       flash[:info] = 'Pronunciation uploaded successfully.'
     else
-      flash[:error] = "Unable to upload pronunciation. #{pronunciation.errors.full_messages.to_sentence}"
+      pronunciation_errors = pronunciation.errors.full_messages.to_sentence
+      flash[:error] = "Unable to upload pronunciation. #{pronunciation_errors}"
     end
     redirect_to pronounceable_path(pronunciation.pronounceable)
   end

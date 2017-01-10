@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -58,7 +59,7 @@ RSpec.describe User, type: :model do
     end
     it do
       is_expected.to have_db_column(:failed_attempts).of_type(:integer)
-      .with_options(default: 0, null: false)
+        .with_options(default: 0, null: false)
     end
     it do
       is_expected.to have_db_column(:unlock_token).of_type(:string)

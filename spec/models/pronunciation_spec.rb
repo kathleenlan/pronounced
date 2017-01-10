@@ -1,14 +1,15 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 RSpec.describe Pronunciation, type: :model do
   describe 'db columns and indices' do
     it do
       is_expected.to have_db_column(:user_id).of_type(:integer)
-      .with_options(foreign_key: true, null: false)
+        .with_options(foreign_key: true, null: false)
     end
     it do
       is_expected.to have_db_column(:pronounceable_id).of_type(:integer)
-      .with_options(foreign_key: true, null: false)
+        .with_options(foreign_key: true, null: false)
     end
     it do
       is_expected.to have_db_column(:audio_file_file_name).of_type(:string)

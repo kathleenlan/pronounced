@@ -39,6 +39,5 @@ The test suite can be run by running `bundle exec rake` on the command line in t
 
 * Add rating system for users to evaluate the accuracy of pronunciations
 * Implement authorization
-
-* Add rubocop and simplecov
 * Format displayed datetimes
+* Extract error messages to localization file

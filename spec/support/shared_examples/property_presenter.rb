@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 RSpec.shared_examples 'a property presenter' do
   describe 'API' do
     it 'responds to #property' do

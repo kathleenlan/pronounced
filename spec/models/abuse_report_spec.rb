@@ -1,29 +1,30 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 RSpec.describe AbuseReport, type: :model do
   describe 'db columns' do
     it do
       is_expected.to have_db_column(:pronunciation_id).of_type(:integer)
-      .with_options(null: false)
+        .with_options(null: false)
     end
     it do
       is_expected.to have_db_column(:reported_by_id).of_type(:integer)
-      .with_options(null: false)
+        .with_options(null: false)
     end
     it do
       is_expected.to have_db_column(:abuse_report_reason_id).of_type(:integer)
-      .with_options(null: false)
+        .with_options(null: false)
     end
     it do
       is_expected.to have_db_column(:description).of_type(:text)
     end
     it do
       is_expected.to have_db_column(:created_at).of_type(:datetime)
-      .with_options(null: false)
+        .with_options(null: false)
     end
     it do
       is_expected.to have_db_column(:updated_at).of_type(:datetime)
-      .with_options(null: false)
+        .with_options(null: false)
     end
   end
 
@@ -88,19 +89,19 @@ RSpec.describe AbuseReport, type: :model do
     describe 'transitions' do
       it do
         is_expected.to transition_from(:submitted).to(:acknowledged)
-        .on_event(:acknowledge).on(:abuse_report_status)
+          .on_event(:acknowledge).on(:abuse_report_status)
       end
       it do
         is_expected.to_not transition_from(:submitted).to(:addressed)
-        .on_event(:acknowledge).on(:abuse_report_status)
+          .on_event(:acknowledge).on(:abuse_report_status)
       end
       it do
         is_expected.to transition_from(:acknowledged).to(:addressed)
-        .on_event(:address).on(:abuse_report_status)
+          .on_event(:address).on(:abuse_report_status)
       end
       it do
         is_expected.to_not transition_from(:acknowledged).to(:submitted)
-        .on_event(:address).on(:abuse_report_status)
+          .on_event(:address).on(:abuse_report_status)
       end
     end
   end

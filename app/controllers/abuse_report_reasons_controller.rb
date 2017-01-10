@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AbuseReportReasonsController < ApplicationController
   before_action :set_abuse_report_reason, only: [:show, :edit, :update]
 
@@ -30,8 +31,7 @@ class AbuseReportReasonsController < ApplicationController
     render 'properties/show'
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @abuse_report_reason.update_attributes(permitted_params)

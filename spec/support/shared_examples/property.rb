@@ -1,12 +1,13 @@
+# frozen_string_literal: true
 RSpec.shared_examples 'a property' do
   describe 'db columns' do
     it do
       is_expected.to have_db_column(:name).of_type(:string)
-    .with_options(null: false)
+        .with_options(null: false)
     end
     it do
       is_expected.to have_db_column(:type).of_type(:string)
-    .with_options(null: false)
+        .with_options(null: false)
     end
     it do
       is_expected.to have_db_column(:description).of_type(:text)

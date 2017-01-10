@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AbuseReportReasonPresenter
   attr_reader :property
 

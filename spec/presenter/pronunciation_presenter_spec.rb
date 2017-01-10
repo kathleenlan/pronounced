@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 describe PronunciationPresenter do
@@ -13,10 +14,11 @@ describe PronunciationPresenter do
   end
 
   describe '#user_allowed_to_report?' do
-    context 'when the user has previously submitted a report for this pronunciation' do
+    context 'when the user has previously submitted a report for this '\
+      'pronunciation' do
       before do
         allow(pronunciation).to receive(:any_abuse_reports_reported_by?)
-        .with(user).and_return true
+          .with(user).and_return true
       end
 
       it 'returns false' do
@@ -24,10 +26,11 @@ describe PronunciationPresenter do
       end
     end
 
-    context 'when the user has not previously submitted a report for this pronunciation' do
+    context 'when the user has not previously submitted a report for this '\
+      'pronunciation' do
       before do
         allow(pronunciation).to receive(:any_abuse_reports_reported_by?)
-        .with(user).and_return false
+          .with(user).and_return false
       end
 
       it 'returns true' do

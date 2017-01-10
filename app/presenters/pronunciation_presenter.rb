@@ -1,5 +1,6 @@
+# frozen_string_literal: true
 class PronunciationPresenter < SimpleDelegator
-  alias_method :pronunciation, :__getobj__
+  alias pronunciation __getobj__
 
   def user_allowed_to_report?(user)
     !pronunciation.any_abuse_reports_reported_by?(user)

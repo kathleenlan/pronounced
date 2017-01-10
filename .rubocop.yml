@@ -1,0 +1,17 @@
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
+  TargetRubyVersion: 2.3
+
+Style/Encoding:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+
+Documentation:
+  Enabled: false

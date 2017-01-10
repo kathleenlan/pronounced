@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class PronounceablesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :set_existing_pronounceable, only: [:show, :edit, :update]
@@ -16,23 +17,23 @@ class PronounceablesController < ApplicationController
       flash[:info] = 'Pronounceable saved successfully.'
       redirect_to pronounceable_path(@pronounceable)
     else
-      flash[:error] = "Unable to save pronounceable. #{@pronounceable.errors.full_messages.to_sentence}."
+      pronounceable_errors = @pronounceable.errors.full_messages.to_sentence
+      flash[:error] = "Unable to save pronounceable. #{pronounceable_errors}."
       render 'new'
     end
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @pronounceable.update_attributes(pronounceable_params)
       flash[:info] = 'Changes saved successfully.'
       redirect_to pronounceable_path(@pronounceable)
     else
-      flash[:error] = "Unable to save changes. #{@pronounceable.errors.full_messages.to_sentence}"
+      pronounceable_errors = @pronounceable.errors.full_messages.to_sentence
+      flash[:error] = "Unable to save changes. #{pronounceable_errors}"
       render 'edit'
     end
   end
