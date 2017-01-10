@@ -67,6 +67,10 @@ RSpec.describe User, type: :model do
     it do
       is_expected.to have_db_column(:locked_at).of_type(:datetime)
     end
+    it do
+      is_expected.to have_db_column(:admin).of_type(:boolean)
+        .with_options(default: false)
+    end
   end
 
   describe 'associations' do
