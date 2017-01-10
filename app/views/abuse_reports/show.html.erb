@@ -1,5 +1,8 @@
 <h1>Abuse report #<%= @abuse_report.id %></h1>
 
+<h2>Current status</h2>
+<%= @abuse_report.abuse_report_status.capitalize %>
+
 <h2>Report details</h2>
 
 <table class="ui celled table">
@@ -46,4 +49,24 @@
 <h3>Uploaded file</h3>
 <%= audio_tag(@abuse_report.pronunciation_audio_file_url, controls: true, loop: true, preload: "none") %>
 
-<!-- TODO: Add buttons for making acknowledging and addressing report -->
+<h2>Actions</h2>
+
+<% if @abuse_report.submitted? %>
+  <%= link_to "Acknowledge", acknowledge_abuse_report_path(@abuse_report), method: :post, class: "ui button" %>
+<% elsif @abuse_report.acknowledged? %>
+  <div class="">
+    <%= link_to "Disable pronunciation and dismiss report",
+      dismiss_abuse_report_path(@abuse_report, disable_pronunciation: true),
+      method: :post,
+      class: "ui button"
+    %>
+    <%= link_to "Dismiss report only",
+      dismiss_abuse_report_path(@abuse_report, disable_pronunciation: false),
+      method: :post,
+      class: "ui button" %>
+  </div>
+<% elsif @abuse_report.addressed? %>
+  This report has been addressed. There are no more actions to take at this time.
+<% else %>
+  There are no more actions to take at this time.
+<% end %>

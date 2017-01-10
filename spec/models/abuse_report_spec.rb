@@ -104,4 +104,23 @@ RSpec.describe AbuseReport, type: :model do
       end
     end
   end
+
+  describe '#disable_pronunciation!' do
+    let(:pronunciation) do
+      Pronunciation.new
+    end
+
+    subject do
+      described_class.new(pronunciation: pronunciation)
+    end
+
+    before do
+      allow(pronunciation).to receive(:disable!).and_return true
+    end
+
+    it 'disables the pronunciation' do
+      expect(pronunciation).to receive(:disable!)
+      subject.disable_pronunciation!
+    end
+  end
 end

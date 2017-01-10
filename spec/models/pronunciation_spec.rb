@@ -22,6 +22,10 @@ RSpec.describe Pronunciation, type: :model do
     it do
       is_expected.to have_db_column(:audio_file_updated_at).of_type(:datetime)
     end
+    it do
+      is_expected.to have_db_column(:disabled)
+        .of_type(:boolean).with_options(default: false)
+    end
 
     it do
       is_expected.to have_db_index(:pronounceable_id)
@@ -85,6 +89,26 @@ RSpec.describe Pronunciation, type: :model do
 
     it 'returns the user' do
       expect(subject.uploaded_by).to eql user
+    end
+  end
+
+  describe '#disable!' do
+    context 'when the pronunciation is not disabled' do
+      it 'marks the pronunciation as disabled' do
+        expect { subject.disable! }.to change { subject.disabled }
+          .from(false).to(true)
+      end
+    end
+
+    context 'when the pronunciation is disabled' do
+      subject do
+        described_class.new(disabled: true)
+      end
+
+      it 'keeps the pronunciation disabled' do
+        subject.disable!
+        expect(subject.disabled).to be true
+      end
     end
   end
 end

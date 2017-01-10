@@ -26,4 +26,8 @@ class AbuseReport < ApplicationRecord
   delegate :upload_date, :uploaded_by, :audio_file_url, to: :pronunciation, prefix: true
 
   scope :reported_by, -> (user) { where(reported_by: user) }
+
+  def disable_pronunciation!
+    pronunciation.disable!
+  end
 end

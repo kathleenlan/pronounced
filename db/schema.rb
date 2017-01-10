@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109024910) do
+ActiveRecord::Schema.define(version: 20170110005520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,14 +41,15 @@ ActiveRecord::Schema.define(version: 20170109024910) do
   end
 
   create_table "pronunciations", force: :cascade do |t|
-    t.integer  "user_id",                 null: false
-    t.integer  "pronounceable_id",        null: false
+    t.integer  "user_id",                                 null: false
+    t.integer  "pronounceable_id",                        null: false
     t.string   "audio_file_file_name"
     t.string   "audio_file_content_type"
     t.integer  "audio_file_file_size"
     t.datetime "audio_file_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "disabled",                default: false
     t.index ["pronounceable_id"], name: "index_pronunciations_on_pronounceable_id", using: :btree
     t.index ["user_id", "pronounceable_id"], name: "index_pronunciations_on_user_id_and_pronounceable_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_pronunciations_on_user_id", using: :btree

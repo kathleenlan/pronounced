@@ -1,4 +1,35 @@
 class AbuseReportsController < ApplicationController
+  before_action :set_existing_abuse_report, only: [:acknowledge, :dismiss, :show]
+
+  def acknowledge
+    @abuse_report.acknowledge!
+    flash[:info] = 'Successfully acknowledged report.'
+    redirect_to abuse_report_path(@abuse_report)
+  rescue AASM::InvalidTransition
+    flash[:error] = 'Unable to acknowledge abuse report.'
+    redirect_to abuse_report_path(@abuse_report)
+  end
+
+  def dismiss
+    ActiveRecord::Base.transaction do
+      @abuse_report.address!
+      if params[:disable_pronunciation] == "true"
+        if @abuse_report.disable_pronunciation!
+          flash[:info] = 'Successfully disabled pronunciation and dismissed report.'
+        else
+          flash[:error] = 'Unable to disable pronunciation. The report status has been left unchanged.'
+          raise ActiveRecord::Rollback
+        end
+      else
+        flash[:info] = 'Successfully dismissed report.'
+      end
+    end
+  rescue AASM::InvalidTransition
+    flash[:error] = 'Unable to dismiss report.'
+  ensure
+    redirect_to abuse_report_path(@abuse_report)
+  end
+
   # TODO: Set up pagination
   def index
     @abuse_reports = AbuseReport.all
@@ -16,6 +47,9 @@ class AbuseReportsController < ApplicationController
   end
 
   def show
+  end
+
+  private def set_existing_abuse_report
     @abuse_report = AbuseReport.find(params[:id])
   end
 

@@ -9,5 +9,10 @@ Rails.application.routes.draw do
 
   resources :abuse_report_reasons, except: [:destroy]
   resources :abuse_report_statuses, except: [:destroy]
-  resources :abuse_reports
+  resources :abuse_reports, only: [:index, :create, :show] do
+    member do
+      post :acknowledge
+      post :dismiss
+    end
+  end
 end

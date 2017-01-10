@@ -25,4 +25,8 @@ class Pronunciation < ApplicationRecord
   def uploaded_by
     user
   end
+
+  def disable!
+    update_attributes(disabled: true)
+  end
 end
