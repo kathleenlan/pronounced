@@ -7,10 +7,15 @@
     <% @pronounceable.each_pronunciation do |pronunciation, index| %>
       <div class="ui stackable two column grid segment">
         <div class="column">
-          <%= audio_tag(pronunciation.audio_file_url, controls: true, loop: true, preload: "none") %>
+          <% if pronunciation.disabled? %>
+            <i class="warning sign icon"></i> This pronunciation has been disabled.
+          <% else %>
+            <%= audio_tag(pronunciation.audio_file_url, controls: true, loop: true, preload: "none") %>
+          <% end %>
         </div>
         <div class="column">
-          Contributed by <%= pronunciation.user %>
+          Contributed by <%= pronunciation.user %><br>
+          Uploaded on <%= pronunciation.upload_date %>
         </div>
         <div class="column">
           <%= render partial: 'abuse_report', locals: { pronunciation: pronunciation, index: index } %>

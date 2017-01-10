@@ -33,9 +33,12 @@ The test suite can be run by running `bundle exec rake` on the command line in t
 ## TODO
 
 * Add abuse reporting system
-  - add a way for users to file an abuse report for a pronunciation
   - add authorization/restrict report filing to logged in users
-  - add admin pages for viewing and handling abuse reports
+  - prettify abuse report form
+  - improve UX for abuse report submission
 
 * Add rating system for users to evaluate the accuracy of pronunciations
 * Implement authorization
+
+* Add rubocop and simplecov
+* Format displayed datetimes

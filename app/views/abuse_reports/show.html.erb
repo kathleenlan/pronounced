@@ -24,7 +24,11 @@
 
 <h3>Report description</h3>
 <div class="ui segment">
-  <%= @abuse_report.description %>
+  <% if @abuse_report.description.present? %>
+    <%= @abuse_report.description %>
+  <% else %>
+    No description available.
+  <% end %>
 </div>
 
 <h2>Pronunciation details</h2>
