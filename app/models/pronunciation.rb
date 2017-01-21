@@ -25,6 +25,10 @@ class Pronunciation < ApplicationRecord
 
   delegate :url, to: :audio_file, prefix: true
 
+  scope :for_pronounceable, lambda { |pronounceable|
+    where(pronounceable_id: pronounceable.id)
+  }
+
   def any_abuse_reports_reported_by?(user)
     abuse_reports.reported_by(user).any?
   end

@@ -12,4 +12,8 @@ class User < ApplicationRecord
   def to_s
     email
   end
+
+  def no_pronunciations_for?(pronounceable)
+    pronunciations.for_pronounceable(pronounceable).none?
+  end
 end
