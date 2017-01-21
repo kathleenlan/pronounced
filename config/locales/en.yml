@@ -30,3 +30,10 @@ en:
           attributes:
             user:
               taken: 'have already uploaded a pronunciation for this Pronouncable.'
+  controllers:
+    abuse_reports:
+      dismiss:
+        disable_error: 'Unable to disable pronunciation. The report status has been left unchanged.'
+        dismiss_error: 'Unable to dismiss report.'
+        disable_and_dismiss_success: 'Successfully disabled pronunciation and dismissed report.'
+        dismiss_success: 'Successfully dismissed report.'

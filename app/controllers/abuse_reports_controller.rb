@@ -12,30 +12,17 @@ class AbuseReportsController < ApplicationController
     redirect_to abuse_report_path(@abuse_report)
   end
 
-  # TODO: Refactor
-  # rubocop:disable Metrics/MethodLength
   def dismiss
     ActiveRecord::Base.transaction do
       @abuse_report.address!
-      if params[:disable_pronunciation] == 'true'
-        if @abuse_report.disable_pronunciation!
-          flash[:info] = 'Successfully disabled pronunciation and dismissed '\
-            'report.'
-        else
-          flash[:error] = 'Unable to disable pronunciation. The report status '\
-            'has been left unchanged.'
-          raise ActiveRecord::Rollback
-        end
-      else
-        flash[:info] = 'Successfully dismissed report.'
-      end
+      disable_pronunciation = params[:disable_pronunciation] == 'true'
+      dismiss_report(disable_pronunciation)
     end
   rescue AASM::InvalidTransition
-    flash[:error] = 'Unable to dismiss report.'
+    flash[:error] = I18n.t('controllers.abuse_reports.dismiss.dismiss_error')
   ensure
     redirect_to abuse_report_path(@abuse_report)
   end
-  # rubocop:enable Metrics/MethodLength
 
   # TODO: Set up pagination
   def index
@@ -68,5 +55,22 @@ class AbuseReportsController < ApplicationController
       :abuse_report_reason_id,
       :description
     )
+  end
+
+  private def dismiss_report(disable_pronunciation)
+    if disable_pronunciation
+      if @abuse_report.disable_pronunciation!
+        # rubocop:disable Metrics/LineLength
+        flash[:info] = I18n.t('controllers.abuse_reports.dismiss.disable_and_dismiss_success')
+        # rubocop:enable Metrics/LineLength
+      else
+        # rubocop:disable Metrics/LineLength
+        flash[:error] = I18n.t('controllers.abuse_reports.dismiss.disable_error')
+        # rubocop:enable Metrics/LineLength
+        raise ActiveRecord::Rollback
+      end
+    else
+      flash[:info] = I18n.t('controllers.abuse_reports.dismiss.dismiss_success')
+    end
   end
 end
