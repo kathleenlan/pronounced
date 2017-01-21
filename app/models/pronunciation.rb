@@ -3,9 +3,17 @@ class Pronunciation < ApplicationRecord
   has_attached_file :audio_file
   validates_attachment :audio_file, presence: true,
                                     content_type: {
-                                      content_type: ['audio/mpeg', 'audio/mp3']
+                                      content_type: [
+                                        'audio/mpeg',
+                                        'audio/mp3',
+                                        'audio/mp4',
+                                        'video/mp4',
+                                        'audio/ogg',
+                                        'audio/wav',
+                                        'audio/webm'
+                                      ]
                                     },
-                                    size: { in: 0..10.megabytes }
+                                    size: { in: 0..2.megabytes }
 
   validates :pronounceable, presence: true
   validates :user, presence: true, uniqueness: { scope: :pronounceable_id }
