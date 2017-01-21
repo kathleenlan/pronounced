@@ -10,7 +10,7 @@
           <% if pronunciation.disabled? %>
             <i class="warning sign icon"></i> This pronunciation has been disabled.
           <% else %>
-            <%= audio_tag(pronunciation.audio_file_url, controls: true, loop: true, preload: "none") %>
+            <%= audio_tag(pronunciation.audio_file_url, controls: true, loop: false, preload: "none") %>
           <% end %>
         </div>
         <div class="column">
