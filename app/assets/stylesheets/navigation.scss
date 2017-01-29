@@ -25,5 +25,13 @@
 }
 
 .ui.button.admin-management-button {
-  margin: 0.25em;
+  margin: 0.25em 0;
+  font-weight: bold;
+  color: black;
+  background-color: white;
+
+  &:hover {
+    box-shadow: 0 0 0 2px $dark-blue inset;
+    color: $dark-blue !important;
+  }
 }

@@ -2,7 +2,7 @@
 
 <div class="ui two column grid">
   <div class="column">
-    <h2>Abuse reports</h2>
+    <h2 class="section-header">Abuse reports</h2>
     <div>
       <%= link_to abuse_reports_path, class: "ui button admin-management-button" do %>
         Abuse reports
@@ -14,15 +14,9 @@
         Abuse report reasons
       <% end %>
     </div>
-
-    <div>
-      <%= link_to "#", class: "ui button admin-management-button" do %>
-        Abuse report statuses
-      <% end %>
-    </div>
   </div>
   <div class="column">
-    <h2>Users</h2>
+    <h2 class="section-header">Users</h2>
     <div>
       <%= link_to users_path, class: "ui button admin-management-button" do %>
         Users
