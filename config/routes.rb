@@ -17,5 +17,6 @@ Rails.application.routes.draw do
         post :dismiss
       end
     end
+    resources :users, only: [:index]
   end
 end

@@ -1,0 +1,28 @@
+<h1>Users</h1>
+
+<div class="ui large breadcrumb">
+  <%= link_to "Admin", management_index_path, class: "active section" %>
+  <div class="divider"> / </div>
+  <div class="active section">Users</div>
+</div>
+
+<table class="ui sortable compact celled striped table">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Admin?</th>
+      <th>Sign up date</th>
+      <th>Pronunciations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.admin? ? 'Yes' : 'No' %></td>
+        <td><%= user.created_at %></td>
+        <td><%= user.pronunciations.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
