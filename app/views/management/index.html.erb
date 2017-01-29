@@ -1,0 +1,26 @@
+<h1>Admin Dashboard</h1>
+
+<div class="ui two column grid">
+  <div class="column">
+    <div class="">
+      <h2>Abuse reports</h2>
+      <div class="">
+        <%= link_to abuse_reports_path, class: "ui button admin-management-button" do %>
+          Abuse reports
+        <% end %>
+      </div>
+
+      <div class="">
+        <%= link_to abuse_report_reasons_path, class: "ui button admin-management-button" do %>
+          Abuse report reasons
+        <% end %>
+      </div>
+
+      <div class="">
+        <%= link_to "#", class: "ui button admin-management-button" do %>
+          Abuse report statuses
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
