@@ -2,6 +2,7 @@
 class AbuseReportsController < ApplicationController
   before_action :set_existing_abuse_report,
                 only: [:acknowledge, :dismiss, :show]
+  before_action :authenticate_admin_user!
 
   def acknowledge
     @abuse_report.acknowledge!

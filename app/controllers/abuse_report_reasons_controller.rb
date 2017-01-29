@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 class AbuseReportReasonsController < ApplicationController
   before_action :set_abuse_report_reason, only: [:show, :edit, :update]
+  before_action :authenticate_admin_user!
 
   def index
     abuse_report_reasons = AbuseReportReason.all
