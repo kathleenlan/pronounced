@@ -1,5 +1,11 @@
 <h1><%= @presenter.header %></h1>
 
+<div class="ui large breadcrumb">
+  <%= link_to "Admin", management_index_path, class: "active section" %>
+  <div class="divider"> / </div>
+  <div class="active section">Abuse Report Reasons</div>
+</div>
+
 <div class="add-button-row">
   <%= link_to new_property_path, class: "ui positive right floated button" do %>
     <i class="add circle icon"></i> <%= @presenter.new_property_button_label %>
