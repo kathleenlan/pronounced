@@ -2,6 +2,5 @@
 class ManagementController < ApplicationController
   before_action :authenticate_admin_user!
 
-  def index
-  end
+  def index; end
 end
