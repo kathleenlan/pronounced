@@ -1,3 +1,13 @@
+<div>
+  <%= search_form_for @q do |f| %>
+    <!-- TODO: Add hidden field for language_id -->
+      <div class="ui massive fluid icon input">
+        <%= f.search_field :name_cont, placeholder: "Search for a word or phrase", autofocus: true %>
+        <i class="search link icon"></i>
+      </div>
+  <% end %>
+</div>
+
 <div class="add-button-row">
   <%= link_to new_pronounceable_path, class: "ui positive right floated button" do %>
     <i class="add circle icon"></i> Add a pronounceable

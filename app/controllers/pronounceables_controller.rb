@@ -4,7 +4,8 @@ class PronounceablesController < ApplicationController
   before_action :set_existing_pronounceable, only: [:show, :edit, :update]
 
   def index
-    @pronounceables = Pronounceable.page(current_page)
+    @q = Pronounceable.ransack(params[:q])
+    @pronounceables = @q.result(distinct: true).page(current_page)
   end
 
   def new
