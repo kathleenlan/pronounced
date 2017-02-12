@@ -4,7 +4,7 @@ class PronounceablesController < ApplicationController
   before_action :set_existing_pronounceable, only: [:show, :edit, :update]
 
   def index
-    @pronounceables = Pronounceable.all.page(current_page)
+    @pronounceables = Pronounceable.page(current_page)
   end
 
   def new

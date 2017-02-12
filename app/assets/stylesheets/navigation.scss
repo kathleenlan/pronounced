@@ -10,11 +10,14 @@
   padding: 1em 2em;
 }
 
-.ui.inverted.pagination.menu {
-  background-color: $dark-blue;
+.ui.pagination.menu {
   margin-top: 0.5em;
   margin-bottom: 1em;
-  float: right;
+  float: left;
+  .item a:hover {
+    border-color: $dark-blue;
+    color: $dark-blue;
+  }
 }
 
 .clickable-table-row {

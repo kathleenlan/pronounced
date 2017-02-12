@@ -27,7 +27,7 @@ class AbuseReportsController < ApplicationController
 
   # TODO: Set up pagination
   def index
-    @abuse_reports = AbuseReport.all
+    @abuse_reports = AbuseReport.page(params[:page])
   end
 
   def create
