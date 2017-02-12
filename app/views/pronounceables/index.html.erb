@@ -5,7 +5,7 @@
 </div>
 
 <% if @pronounceables.any? %>
-  <div class="ui cards index-listing" data-container="pronounceables">
+  <div class="ui four stackable cards index-listing" data-container="pronounceables">
     <% @pronounceables.each do |pronounceable| %>
       <div class="card pronounceable" data-link-to=<%= pronounceable_path(pronounceable) %>>
         <div class="content">
@@ -15,7 +15,7 @@
 
           <div class="meta pronunciations-count">
             <%= pronounceable.pronunciations_count %>
-            Pronunciations
+            <i class="talk outline icon"></i>
           </div>
         </div>
       </div>

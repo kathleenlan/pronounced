@@ -30,11 +30,19 @@
   }
 }
 
-.ui.grid.segment.pronounceable {
+.ui.cards .card.pronounceable {
   border: 2px solid $dark-blue;
+
   &:hover {
     border-color: $light-blue;
     color: $light-blue;
+    .content .header {
+      color: $light-blue;
+    }
+  }
+
+  .content .header {
+    color: $dark-blue;
   }
 }
 
