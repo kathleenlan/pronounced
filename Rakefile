@@ -4,10 +4,12 @@
 # available to Rake.
 
 require_relative 'config/application'
-require 'rubocop/rake_task'
+require 'rubocop/rake_task' if Rails.env.development?
 
 Rails.application.load_tasks
 
-RuboCop::RakeTask.new
+if Rails.env.development?
+  RuboCop::RakeTask.new
 
-task default: :rubocop
+  task default: :rubocop
+end
