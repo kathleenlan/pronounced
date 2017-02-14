@@ -12,6 +12,8 @@ of Pronounced is to provide a platform where multiple users' pronunciations
 can be aggregated to provide a more complete understanding of how
 a Pronounceable may sound.
 
+[View demo here](https://pronounced.herokuapp.com/)
+
 ## Ruby version
 
 This application is developed against Ruby 2.3.1.
@@ -33,7 +35,6 @@ The test suite can be run by running `bundle exec rake` on the command line in t
 ## TODO
 
 * Add abuse reporting system
-  - add authorization/restrict report filing to logged in users
   - prettify abuse report form
   - improve UX for abuse report submission
 
