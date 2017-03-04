@@ -18,10 +18,10 @@ class PronounceablesController < ApplicationController
       flash[:info] = 'Pronounceable saved successfully.'
       redirect_to pronounceable_path(@pronounceable)
     else
-      pronounceable_errors = @pronounceable.errors.full_messages.to_sentence
-      flash[:error] = "Unable to save pronounceable. #{pronounceable_errors}."
-      render 'new'
+      handle_pronounceable_creation_failure
     end
+  rescue ActiveRecord::StatementInvalid
+    handle_pronounceable_creation_failure
   end
 
   def show; end
@@ -56,5 +56,11 @@ class PronounceablesController < ApplicationController
   # retrieving the first page.
   private def current_page
     params[:page]
+  end
+
+  private def handle_pronounceable_creation_failure
+    pronounceable_errors = @pronounceable.errors.full_messages.to_sentence
+    flash[:error] = "Unable to save pronounceable. #{pronounceable_errors}."
+    render 'new'
   end
 end

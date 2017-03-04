@@ -23,7 +23,13 @@ RSpec.describe Pronounceable, type: :model do
     end
 
     it do
+      is_expected.to validate_presence_of(:name)
+    end
+    it do
       is_expected.to validate_uniqueness_of(:name).scoped_to(:language_id)
+    end
+    it do
+      is_expected.to validate_presence_of(:language)
     end
   end
 
