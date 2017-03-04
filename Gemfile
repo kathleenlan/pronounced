@@ -49,6 +49,7 @@ group :development do
 end
 
 group :test do
+  gem 'capybara', '~> 2.12.1'
   gem 'factory_girl'
   gem 'shoulda-matchers', '~> 3.1.1'
   gem 'simplecov', '~> 0.12.0', require: false
