@@ -14,6 +14,7 @@ gem 'pg', '~> 0.19.0'
 gem 'puma', '~> 3.6.0'
 gem 'ransack', '~> 1.8.2'
 gem 'sass-rails', '~> 5.0.6'
+gem 'sendgrid-ruby', '~> 4.3.1'
 gem 'semantic-ui-sass', '~> 2.1.8.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
