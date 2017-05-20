@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 class Pronounceable < ApplicationRecord
+  # Since pronounceables are rendered in a 1 - 4 column layout (depending on
+  # device screen size), it makes sense to paginate by a number that divides
+  # evenly by 1, 2, 3, and 4.
+  paginates_per 24
+
   validates :name, presence: true, uniqueness: { scope: :language_id }
   validates :language, presence: true
 
