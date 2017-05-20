@@ -22,10 +22,10 @@
     </thead>
     <tbody>
     <% @presenter.properties.each do |property| %>
-        <tr>
-          <td><%= property.name %></td>
-          <td><%= property.description.truncate(50) %></td>
-        </tr>
+      <tr>
+        <td><%= property.name %></td>
+        <td><%= property.description.truncate(50) %></td>
+      </tr>
     <% end %>
     </tbody>
   </table>
