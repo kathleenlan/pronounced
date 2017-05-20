@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110232527) do
+ActiveRecord::Schema.define(version: 20170520211545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,8 +34,9 @@ ActiveRecord::Schema.define(version: 20170110232527) do
   end
 
   create_table "pronounceables", force: :cascade do |t|
-    t.string  "name",        null: false
-    t.integer "language_id", null: false
+    t.string  "name",                    null: false
+    t.integer "language_id",             null: false
+    t.integer "view_count",  default: 0
     t.index ["language_id"], name: "index_pronounceables_on_language_id", using: :btree
     t.index ["name", "language_id"], name: "index_pronounceables_on_name_and_language_id", unique: true, using: :btree
   end

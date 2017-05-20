@@ -24,7 +24,9 @@ class PronounceablesController < ApplicationController
     handle_pronounceable_creation_failure
   end
 
-  def show; end
+  def show
+    @pronounceable.increment_view_count!
+  end
 
   def edit; end
 
