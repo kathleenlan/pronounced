@@ -1,5 +1,26 @@
 <h1 class="ui header"><%= @pronounceable %></h1>
 
+<div class="ui tiny statistics">
+  <div class="statistic">
+    <div class="value">
+      <%= @pronounceable.pronunciations_count %>
+      <i class="talk outline icon"></i>
+    </div>
+    <div class="label">
+      pronunciations
+    </div>
+  </div>
+  <div class="statistic">
+    <div class="value">
+      <%= @pronounceable.view_count %>
+      <i class="unhide icon"></i>
+    </div>
+    <div class="label">
+      views
+    </div>
+  </div>
+</div>
+
 <h2 class="ui horizontal divider header">Pronunciations</h2>
 
 <% if @pronounceable.any_pronunciations? %>
