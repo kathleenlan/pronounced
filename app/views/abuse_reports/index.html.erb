@@ -6,11 +6,11 @@
   <div class="active section">Abuse Reports</div>
 </div>
 
-<div class="ui message">
-  Click on a row to view the details for the report.
-</div>
-
 <% if @abuse_reports.any? %>
+  <div class="ui message">
+    Click on a row to view the details for the report.
+  </div>
+
   <table class="ui sortable compact celled striped table">
     <thead>
       <tr>
@@ -45,5 +45,7 @@
   </table>
   <%= paginate @abuse_reports %>
 <% else %>
-  No abuse reports. All is well.
+  <div class="ui message">
+    No abuse reports. All is well.
+  </div>
 <% end %>
