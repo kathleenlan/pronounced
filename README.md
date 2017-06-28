@@ -34,11 +34,36 @@ The test suite can be run by running `bundle exec rake` on the command line in t
 
 ## TODO
 
-* Add abuse reporting system
-  - prettify abuse report form
-  - improve UX for abuse report submission
-
-* Add rating system for users to evaluate the accuracy of pronunciations
+* Add recaptcha to pronunciation upload form and user creation form
+* Allow users to record pronunciations in the browser
+* Allow users to specify their language skill levels/background (e.g. native
+  speaker, fluent non-native speaker, beginner, etc.) in their user profile
+  (This allows other users to better understand the context of the
+  pronunciation.)
 * Implement authorization
 * Format displayed datetimes
 * Extract error messages to localization file
+* Allow users to see all pronunciations contributed by a user
+* Allow users to see a list of their own pronunciations
+* Avoid rendering disabled pronunciations?
+* Paginate pronunciations on pronounceable show page
+* Prettify abuse report form
+* improve UX for abuse report submission
+
+## Thoughts on various design and UX decisions
+
+### Rating system
+
+I have decided not to implement a rating system for users to evaluate
+pronunciations. After careful consideration, I have concluded that it is useful
+to listen to pronunciations from users with a diverse range in language skill
+levels and backgrounds. Originally, Pronounced was conceived with the intention
+of being a reference guide of pronunciations by native speakers (similar to how
+online dictionaries provide pronunciation audio recordings made by native
+speakers of the given language). It occured to me later on that it would be
+useful to hear how non-native speakers pronounce words in a given language as
+well, so that native speakers (and also other non-native speakers) can develop
+a better understanding of what to listen for when speaking with non-native
+speakers. In other words, learning to listen for different pronunciations is a
+two-way street, and rating someone's pronunciation doesn't contribute meaningful
+ to the purpose of this application.
