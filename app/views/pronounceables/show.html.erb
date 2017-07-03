@@ -55,6 +55,7 @@
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.file_field :audio_file, class: "required field" %>
     <%= f.submit "Upload pronunciation", class: "positive ui button" %>
+    <div class="g-recaptcha" data-sitekey=<%= @recaptcha_site_key %></div>
   <% end %>
 <% else %>
   <div class="ui message error">
